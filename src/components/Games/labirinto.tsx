@@ -1,20 +1,23 @@
 import React from 'react';
 import { useNavigate } from "react-router-dom";
-import SequenciaLogicaVisual from "../Sequencia/SequenciaLogicaVisual";
-import styles from "./sequencia.module.css";
+import LabirintoPage from "../Labirinto/LabirintoPage";
+import styles from "./labirinto.module.css";
 
-export default function SequenciaPage() {
+export default function Labirinto() {
   const navigate = useNavigate();
-  
+
   return (
-    <div className="px-4 py-8">
-      <button
+    <>
+    <button
         className={`${styles.button} ${styles["mb-4"]}`}
         onClick={() => navigate("/")}
       >
         Voltar à Página Inicial
       </button>
-      <SequenciaLogicaVisual />
+    <div className="px-4 py-8">
+      
+      <LabirintoPage />
     </div>
+    </>
   );
 }

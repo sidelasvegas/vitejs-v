@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -8,7 +10,14 @@ import Features from './components/Features/';
 import Footer from './components/Footer/';
 import SequenciaPage from './components/Games/sequencia';
 
-import './index.css'; // Importa os estilos globais
+import './index.css';
+import LabirintoPage from './components/Labirinto/LabirintoPage';
+import PuzzlePage from './components/Puzzle/Puzzle';
+
+
+import AboutPage from './pages/AboutPage';
+import ContactPage from './pages/ContactPage';
+import GamesPage from './pages/GamesPage';
 
 function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -36,7 +45,7 @@ function App() {
         />
         <main className="flex-1">
           <Routes>
-            {/* Página inicial */}
+            {/* Rota principal que contém as seções da página inicial */}
             <Route
               path="/"
               element={
@@ -44,11 +53,20 @@ function App() {
                   <Hero scrollToGames={scrollToGames} />
                   <Games playGame={playGame} />
                   <Features />
+                  
                 </>
               }
             />
-            {/* Página do jogo Sequência */}
+
+            {/* Rotas dos jogos */}
             <Route path="/sequencia" element={<SequenciaPage />} />
+            <Route path="/labirinto" element={<LabirintoPage />} />
+            <Route path="/puzzle" element={<PuzzlePage />} />
+            
+            {/* Novas rotas para as páginas de navegação do cabeçalho */}
+            <Route path="/sobre" element={<AboutPage />} />
+            <Route path="/contato" element={<ContactPage />} />
+            <Route path="/jogos" element={<GamesPage playGame={playGame} />} />
           </Routes>
         </main>
         <Footer />
